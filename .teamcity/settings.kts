@@ -1,8 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
-import jetbrains.buildServer.configs.kotlin.v2018_2.buildFeatures.PullRequests
-import jetbrains.buildServer.configs.kotlin.v2018_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.vcs
-import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -35,18 +32,6 @@ project {
 
 object Build : BuildType({
     name = "Build"
-
-    features {
-        add {
-            pullRequests {
-                provider = github {
-                    authType = vcsRoot()
-                    filterTargetBranch = "master"
-                    filterAuthorRole = PullRequests.GitHubRoleFilter.MEMBER
-                }
-            }
-        }
-    }
 
     vcs {
         root(DslContext.settingsRoot)
